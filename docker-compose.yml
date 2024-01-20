@@ -26,3 +26,13 @@ services:
     environment:
       <<: *db-environment
     restart: on-failure
+
+  backend:
+    build: ./backend
+    depends_on:
+      - mysql
+    ports:
+      - "8080:8080"
+    environment:
+      <<: *db-environment
+    restart: unless-stopped

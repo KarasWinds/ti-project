@@ -1,5 +1,11 @@
 version: "3"
 
+x-db-environment: &db-environment
+  DB_USERNAME: test
+  DB_PASSWORD: test
+  DB_HOST: mysql
+  DB_NAME: ti
+
 services:
 
   mysql:
@@ -11,6 +17,12 @@ services:
       MYSQL_DATABASE: ti
     ports:
       - 3306:3306
-    volumes:
-      - ./sql:/docker-entrypoint-initdb.d
     restart: unless-stopped
+
+  datagenerate:
+    build: ./dataGenerate
+    depends_on:
+      - mysql
+    environment:
+      <<: *db-environment
+    restart: on-failure

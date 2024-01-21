@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>客戶管理系統</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 80%; margin: auto; }
+        .tab { display: none; }
+        .tab.active { display: block; }
+        table, th, td { border: 1px solid black; border-collapse: collapse; }
+        th, td { padding: 5px; text-align: left; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>客戶管理系統</h1>
+        <div>
+            <button onclick="openTab('tab1')">交易總金額</button>
+            <button onclick="openTab('tab2')">客戶資訊管理</button>
+            <button onclick="openTab('tab3')">交易紀錄查詢</button>
+        </div>
+
+        <div id="tab1" class="tab">
+            <h2>所有客戶的交易總金額</h2>
+            <table id="transactionsTable">
+                <tr>
+                    <th>客戶ID</th>
+                    <th>交易總金額</th>
+                </tr>
+            </table>
+        </div>
+
+        <div id="tab2" class="tab">
+            <h2>修改客戶名稱</h2>
+            <form id="modifyForm">
+                <input type="text" id="modifyId" placeholder="客戶ID">
+                <input type="text" id="modifyName" placeholder="新客戶名稱">
+                <button type="submit">修改</button>
+            </form>
+            <h2>新增客戶</h2>
+            <form id="addForm">
+                <input type="text" id="addName" placeholder="客戶名稱">
+                <button type="submit">新增</button>
+            </form>
+        </div>
+
+        <div id="tab3" class="tab">
+            <h2>查詢客戶交易紀錄</h2>
+            <form id="searchForm">
+                <input type="text" id="searchId" placeholder="客戶ID">
+                <input type="date" id="startDate">
+                <input type="date" id="endDate">
+                <button type="submit">查詢</button>
+            </form>
+            <table id="searchResultsTable">
+                <tr>
+                    <th>交易ID</th>
+                    <th>交易金額</th>
+                    <th>交易日期</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
